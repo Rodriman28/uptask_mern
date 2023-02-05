@@ -13,7 +13,7 @@ const tareaSchema = mongoose.Schema(
       required: true,
     },
     estado: {
-      type: boolean,
+      type: Boolean,
       default: false,
     },
     fechaEntrega: {
