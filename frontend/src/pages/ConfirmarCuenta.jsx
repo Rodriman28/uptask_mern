@@ -4,6 +4,8 @@ import axios from "axios";
 import Alerta from "../components/Alerta";
 
 const ConfirmarCuenta = () => {
+  const [alerta, setAlerta] = useState({});
+  const [cuentaConfirmada, setCuentaConfirmada] = useState(false);
   const params = useParams();
   const { id } = params;
 
@@ -12,14 +14,24 @@ const ConfirmarCuenta = () => {
       try {
         const url = `http://localhost:4000/api/usuarios/confirmar/${id}`;
         const { data } = await axios(url);
-
-        console.log(data);
+        setAlerta({
+          msg: data.msg,
+          error: false,
+        });
+        setCuentaConfirmada(true);
       } catch (error) {
-        console.log(error);
+        setAlerta({
+          msg: error.response.data.msg,
+          error: true,
+        });
       }
     };
-    confirmarCuenta();
+    return () => {
+      confirmarCuenta();
+    };
   }, []);
+
+  const { msg } = alerta;
 
   return (
     <>
@@ -27,6 +39,17 @@ const ConfirmarCuenta = () => {
         Confirma tu cuenta y crea tus{" "}
         <span className="text-slate-700">proyectos</span>
       </h1>
+      <div>
+        {msg && <Alerta alerta={alerta} />}
+        {cuentaConfirmada && (
+          <Link
+            className="block text-center my-5 text-slate-500 uppercase text-sm"
+            to="/"
+          >
+            ¿Ya tienes una cuenta? Inicia sesión
+          </Link>
+        )}
+      </div>
     </>
   );
 };
