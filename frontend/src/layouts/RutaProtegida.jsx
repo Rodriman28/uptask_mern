@@ -6,7 +6,6 @@ import Sidebar from "../components/Sidebar";
 const RutaProtegida = () => {
   const { auth, cargando } = useAuth();
 
-  console.log(auth);
   if (cargando) return "Cargando...";
 
   return (
@@ -16,7 +15,7 @@ const RutaProtegida = () => {
           <Header />
           <div className="md:flex md:min-h-screen">
             <Sidebar />
-            <main>
+            <main className="flex-1 p-10">
               <Outlet />
             </main>
           </div>
