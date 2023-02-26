@@ -6,11 +6,12 @@ import OlvidePassword from "./pages/OlvidePassword";
 import NuevoPassword from "./pages/NuevoPassword";
 import ConfirmarCuenta from "./pages/ConfirmarCuenta";
 import { AuthProvider } from "./context/AuthProvider";
-import { ProyectosProvider } from "./context/ProyectoProvider";
+import { ProyectosProvider } from "./context/ProyectosProvider";
 import RutaProtegida from "./layouts/RutaProtegida";
 import Proyectos from "./pages/Proyectos";
 import NuevoProyecto from "./pages/NuevoProyecto";
 import Proyecto from "./pages/Proyecto";
+import EditarProyecto from "./pages/EditarProyecto";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route index element={<Proyectos />} />
               <Route path="crear-proyecto" element={<NuevoProyecto />} />
               <Route path=":id" element={<Proyecto />} />
+              <Route path="editar/:id" element={<EditarProyecto />} />
             </Route>
           </Routes>
         </ProyectosProvider>
