@@ -6,6 +6,7 @@ import ModalEliminarTarea from "../components/ModalEliminarTarea";
 import Tarea from "../components/Tarea";
 import Alerta from "../components/Alerta";
 import Colaborador from "../components/Colaborador";
+import ModalEliminarColaborador from "../components/ModalEliminarColaborador";
 
 const Proyecto = () => {
   const params = useParams();
@@ -115,6 +116,7 @@ const Proyecto = () => {
 
       <ModalFormularioTarea />
       <ModalEliminarTarea />
+      <ModalEliminarColaborador />
     </>
   );
 };
