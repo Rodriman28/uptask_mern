@@ -19,7 +19,7 @@ const Tarea = ({ tarea }) => {
         <p className="mb-2 text-gray-600">Prioridad: {prioridad}</p>
         {estado && (
           <p className="text-xs bg-green-600 uppercase p-1 rounded-lg text-white">
-            Completada por: {tarea.completado.nombre}
+            Completada por: {tarea.completado?.nombre}
           </p>
         )}
       </div>

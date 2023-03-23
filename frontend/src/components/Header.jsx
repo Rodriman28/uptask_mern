@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import useProyectos from "../hooks/useProyectos";
 import Busqueda from "./Busqueda";
 
 const Header = () => {
-  const { handleBuscador, busqueda } = useProyectos();
+  const { handleBuscador, busqueda, cerrarSesionProyectos } = useProyectos();
+  const { cerrarSesionAuth } = useAuth();
+
+  const handleCerrarSesion = () => {
+    cerrarSesionAuth();
+    cerrarSesionProyectos();
+    localStorage.removeItem("token");
+  };
 
   return (
     <header className="px-4 py-5 bg-white border-b">
@@ -23,6 +31,7 @@ const Header = () => {
             Proyectos
           </Link>
           <button
+            onClick={handleCerrarSesion}
             type="button"
             className="text-white text-sm bg-sky-600 p-3 rounded-md uppercase font-bold"
           >
